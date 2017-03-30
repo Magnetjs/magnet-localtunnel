@@ -1,10 +1,10 @@
 import { Module } from 'magnet-core/module'
 import * as localtunnel from 'localtunnel'
-import { fromCallback } from 'bluebird'
 
-import defaultConfig from './config/localtunnel'
+export default class MagnetLocaltunnel extends Module {
+  get moduleName () { return 'localtunnel' }
+  get defaultConfig () { return __dirname }
 
-export default class Localtunnel extends Module {
   async setup () {
     const config = this.prepareConfig('localtunnel', defaultConfig)
 
@@ -12,6 +12,7 @@ export default class Localtunnel extends Module {
     await fromCallback(function (cb) {
       tunnel = localtunnel(config.port, config, cb)
     })
+    this.insert(tunnel)
 
     this.log.info(`Localtunnel exposed port ${config.port} to ${tunnel.url}`);
 
@@ -22,5 +23,9 @@ export default class Localtunnel extends Module {
     tunnel.on('close', (...args) => {
       this.log.error(args)
     })
+  }
+
+  async teardown () {
+    this.app.localtunnel.close()
   }
 }

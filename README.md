@@ -1,5 +1,12 @@
-Magnet wrapper for moduleName
-
 ### Usage
 Basic
-Replace moduleName with your own module name
+```
+import { fromNode, fromM, fromLocal } from 'magnet-core'
+
+let app = await magnet([
+  fromM('config'),
+  fromM('bunyan'),
+  fromM('folder-loader'),
+  fromM('localtunnel'),
+]);
+```
