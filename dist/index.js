@@ -10,16 +10,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const module_1 = require("magnet-core/module");
 const localtunnel = require("localtunnel");
-const bluebird_1 = require("bluebird");
-const localtunnel_1 = require("./config/localtunnel");
-class Localtunnel extends module_1.Module {
+class MagnetLocaltunnel extends module_1.Module {
+    get moduleName() { return 'localtunnel'; }
+    get defaultConfig() { return __dirname; }
     setup() {
         return __awaiter(this, void 0, void 0, function* () {
-            const config = this.prepareConfig('localtunnel', localtunnel_1.default);
+            const config = this.prepareConfig('localtunnel', defaultConfig);
             let tunnel;
-            yield bluebird_1.fromCallback(function (cb) {
+            yield fromCallback(function (cb) {
                 tunnel = localtunnel(config.port, config, cb);
             });
+            this.insert(tunnel);
             this.log.info(`Localtunnel exposed port ${config.port} to ${tunnel.url}`);
             tunnel.on('error', (...args) => {
                 this.log.error(args);
@@ -29,6 +30,11 @@ class Localtunnel extends module_1.Module {
             });
         });
     }
+    teardown() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.app.localtunnel.close();
+        });
+    }
 }
-exports.default = Localtunnel;
+exports.default = MagnetLocaltunnel;
 //# sourceMappingURL=index.js.map

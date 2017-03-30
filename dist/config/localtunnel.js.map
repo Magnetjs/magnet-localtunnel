@@ -1,1 +1,1 @@
-{"version":3,"file":"localtunnel.js","sourceRoot":"","sources":["../../src/config/localtunnel.ts"],"names":[],"mappings":";;AAAA,kDAAkD;AAClD,kBAAe;IACb,IAAI,EAAE,IAAI;CAGX,CAAA"}
+"{\"version\":3,\"file\":\"localtunnel.js\",\"sourceRoot\":\"\",\"sources\":[\"../localtunnel.ts\"],\"names\":[],\"mappings\":\";;AAAA,kDAAkD;AAClD,kBAAe;IACb,IAAI,EAAE,IAAI;CAGX,CAAA\"}"
