@@ -3,8 +3,10 @@ import * as localtunnel from 'localtunnel'
 import { fromCallback } from 'bluebird'
 
 export default class MagnetLocaltunnel extends Module {
-  get moduleName () { return 'localtunnel' }
-  get defaultConfig () { return __dirname }
+  init () {
+    this.moduleName = 'localtunnel'
+    this.defaultConfig = __dirname
+  }
 
   async setup () {
     let tunnel
