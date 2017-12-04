@@ -21,7 +21,7 @@ export default class MagnetLocaltunnel extends Module {
     })
 
     tunnel.on('close', (...args) => {
-      this.log.error(args)
+      this.log.info(args)
     })
   }
 

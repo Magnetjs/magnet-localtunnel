@@ -18,17 +18,14 @@ class MagnetLocaltunnel extends module_1.Module {
     }
     setup() {
         return __awaiter(this, void 0, void 0, function* () {
-            let tunnel;
-            yield bluebird_1.fromCallback((cb) => {
-                tunnel = localtunnel(this.config.port, this.config, cb);
-            });
+            const tunnel = yield bluebird_1.fromCallback((cb) => localtunnel(this.config.port, this.config, cb));
             this.insert(tunnel);
             this.log.info(`Localtunnel exposed port ${this.config.port} to ${tunnel.url}`);
             tunnel.on('error', (...args) => {
                 this.log.error(args);
             });
             tunnel.on('close', (...args) => {
-                this.log.error(args);
+                this.log.info(args);
             });
         });
     }
