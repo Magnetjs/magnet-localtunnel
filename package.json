@@ -1,6 +1,6 @@
 {
   "name": "magnet-localtunnel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Magnet adapter for localtunnel",
   "keywords": [
     "magnet",
@@ -27,7 +27,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "localtunnel": "^1.8.2",
-    "magnet-core": "^3.8.0"
+    "magnet-core": "^4.0.3"
   },
   "devDependencies": {
     "fly": "^2.0.5",
