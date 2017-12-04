@@ -9,10 +9,9 @@ export default class MagnetLocaltunnel extends Module {
   }
 
   async setup () {
-    let tunnel
-    await fromCallback((cb) => {
-      tunnel = localtunnel(this.config.port, this.config, cb)
-    })
+    const tunnel = await fromCallback((cb) =>
+      localtunnel(this.config.port, this.config, cb)
+    )
     this.insert(tunnel)
 
     this.log.info(`Localtunnel exposed port ${this.config.port} to ${tunnel.url}`);
