@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.0",
-    "localtunnel": "^1.8.2",
+    "localtunnel": "^2.0.1",
     "magnet-core": "^4.0.3"
   },
   "devDependencies": {
