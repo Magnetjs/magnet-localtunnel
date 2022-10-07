@@ -22,12 +22,15 @@
   "scripts": {
     "start": "fly",
     "build": "fly build",
-    "dist": "npm run build && npm publish"
+    "dist": "npm run build && npm publish",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
-    "localtunnel": "^1.8.2",
-    "magnet-core": "^4.0.3"
+    "localtunnel": "^2.0.0",
+    "magnet-core": "^4.0.3",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "fly": "^2.0.5",
@@ -40,5 +43,6 @@
   "engines": {
     "node": ">=6.9.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
